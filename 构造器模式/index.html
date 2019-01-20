@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es5
+        // function Student(name,age){
+        //     this.name = name;
+        //     this.age = age;
+        //     this.say = function(){  //实例方法
+        //         console.log(this.name);
+        //     }
+        // }
+
+        // es6
+        class Student {
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+                this.say = function() { //实例方法
+                    console.log(this.name);
+                }
+            }
+        }
+
+        var zs = new Student('zhangsan',20);
+        var ls = new Student('lisi',22);
+        zs.say();
+        ls.say();
+    </script>
+</body>
+</html>
