@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es5
+        // function Student(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     // this.info = function(){  //实例方法  将其改为原型方法更合理
+        //     //     return '姓名'+ this.name + ',年龄' + this.age
+        //     // }
+
+        //     this.info(); // 在创建实例的时候就调用
+        // }
+        // Student.prototype.info = function () {
+        //     console.log('姓名' + this.name + ',年龄' + this.age)
+        // }
+
+
+        // es6 写法
+        class Student {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                // this.info = function(){  //实例方法  将其改为原型方法更合理
+                //     return '姓名'+ this.name + ',年龄' + this.age
+                // }
+
+                this.info(); // 在创建实例的时候就调用
+            }
+            info() {
+                console.log('姓名' + this.name + ',年龄' + this.age)
+            }
+        }
+
+
+        var zs = new Student('zhangsan', 20);
+        var ls = new Student('lisi', 22);
+    </script>
+</body>
+
+</html>
