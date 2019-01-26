@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>抽象工厂模式</h1>
+    <script>
+        // 创建两个工厂：学生工厂和老师工厂
+
+        // 学生工厂
+        function Student(name){
+            this.name = name;
+        }
+        function studentFactory(name) {  
+            return new Student(name);
+        }
+
+        // 老师工厂
+        function Teacher(){
+
+        }
+
+        function teacherFactory(){
+            return new Teacher();
+        }
+
+        // 抽象工厂，里面有学生工厂和老师工厂
+        function userFactory(factoryType) {  
+            switch(factoryType){
+                case '学生':
+                return studentFactory;
+                break;
+                case '老师':
+                return teacherFactory;
+                break;
+                default:
+                throw '没有这个工厂'
+            }
+        }
+
+        var jing = userFactory('学生')('jing');  // 抽象工厂返回一个工厂函数，调用工厂函数返回一个对象。
+        console.log(jing);
+    </script>
+</body>
+
+</html>
