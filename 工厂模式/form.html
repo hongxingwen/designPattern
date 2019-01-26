@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>工厂模式例子</h1>
+    <form id='form'>
+        <div>
+            姓名：
+            <input type="text" name='name'>
+        </div>
+        <div>
+            科目：
+            <select name="subject">
+                <option value="文科">文科</option>
+                <option value="理科">理科</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">提交</button>
+        </div>
+    </form>
+    <script>
+        var form = document.getElementById('form');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.querySelector('[name="name"]').value;
+            var subject = document.querySelector('[name=subject]').value;
+            console.log(name, subject);
+            var student = factor(name, subject);
+            console.log(student);
+
+        })
+
+        function Student(name, subject) {
+            this.name = name;
+            this.subject = subject;
+        }
+
+        function factor(name, type) {
+            switch (type) {
+                case '文科':
+                    return new Student(name, ['政治', '历史', '地理']);
+                    break;
+                case '理科':
+                    return new Student(name, ['数学', '物理', '化学']);
+                    break;
+                case '体育':
+                    return new Student(name, ['跑步', '...']);
+                    break;
+                default:
+                    throw '没有这个类别'
+
+            }
+        }
+    </script>
+</body>
+
+</html>
