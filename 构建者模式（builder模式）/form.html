@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>创建者模式例子</h1>
+    <form id='form'>
+        <p>姓名：<input type="text" name='name' /></p>
+        <p>性别：
+            <input type="radio" name='gender' value='男' />男
+            <input type="radio" name='gender' value='女' />女
+        </p>
+        <p>头发长度：<input type="text" name='hairLength' /></p>
+        <p><button type="submit">创建</button></p>
+    </form>
+    <script>
+        // 创建学生的类
+        function Student() {}
+
+        // 创建一个创建学生属性的类， 将属性的设置放在方法里面，实现非常灵活的设置属性的方法
+        function StudentBuilder() {
+            this.student = new Student();
+        }
+        StudentBuilder.prototype.setName = function (name) {
+            this.student.name = name;
+        }
+        StudentBuilder.prototype.setGender = function (gender) {
+            if (gender != '男' && gender != '女') {
+                throw '保密'
+            } else {
+                this.student.gender = gender;
+            }
+
+        }
+        StudentBuilder.prototype.setHairLength = function (len) {
+            if (
+                (this.student.gender == '男' && len > 1) ||
+                (this.student.gender == '女' && len > 20)
+            ) {
+                throw '头发太长了'
+            } else {
+                this.student.hairLength = len
+            }
+
+        }
+
+
+        StudentBuilder.prototype.builder = function () {
+            return this.student;
+        }
+        var form = document.getElementById('form');
+        var studentBuilder = new StudentBuilder();
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let name = document.querySelector('[name="name"]').value;
+            let gender = document.querySelector('[name="gender"]:checked').value;
+            let hairLength = document.querySelector('[name="hairLength"]').value;
+
+            studentBuilder.setName(name);
+            studentBuilder.setGender(gender);
+            studentBuilder.setHairLength(hairLength);
+
+            var formData = studentBuilder.builder();
+            console.log(formData);
+
+        })
+    </script>
+</body>
+
+</html>

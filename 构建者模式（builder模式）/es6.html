@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>创建者模式</h1>
+    <script>
+        // 创建学生的类
+        class Student {}
+
+        // 创建一个创建学生属性的类， 将属性的设置放在方法里面，实现非常灵活的设置属性的方法
+        class StudentBuilder {
+            constructor() {
+                this.student = new Student();
+            }
+            setName(name) {
+                this.student.name = name;
+            }
+            setGender(gender) {
+                if (gender != '男' && gender != '女') {
+                    throw '保密'
+                } else {
+                    this.student.gender = gender;
+                }
+
+            }
+            setHairLength(len) {
+                if (
+                    (this.student.gender == '男' && len > 1) ||
+                    (this.student.gender == '女' && len > 20)
+                ) {
+                    throw '头发太长了'
+                } else {
+                    this.student.hairLength = len
+                }
+
+            }
+
+
+            builder() {
+                return this.student;
+            }
+        }
+
+
+        var studentBuilder = new StudentBuilder();
+        studentBuilder.setName('竞');
+        studentBuilder.setGender('男');
+        studentBuilder.setHairLength(1);
+        var jing = studentBuilder.builder();
+        console.log(jing.name);
+        console.log(jing.gender);
+        console.log(jing.hairLength);
+    </script>
+</body>
+
+</html>

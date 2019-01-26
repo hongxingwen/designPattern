@@ -22,9 +22,15 @@ function Foo(){  // 实例方法
         //
     }
 }
+
+
+
 Foo.bar = function(){ //静态方法，只能通过构造函数访问
     //
 }
+
+
+
 Foo.prototype.bar = function(){ //原型方法
     //
 }
