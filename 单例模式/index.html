@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>单例模式</h1>
+    <script>
+        function Resource() {
+            if (Resource.instance) {
+                return Resource.instance
+            } else {
+                this.balance = 100;
+                Resource.instance = this;
+            }
+        }
+
+        var myschool = new Resource();
+        myschool.balance = 200;
+        var myschool2 = new Resource();
+        myschool2.balance = 400;
+        console.log(myschool.balance);
+        console.log(myschool2.balance);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>单例模式</h1>
+    <div id="box">
+        <p>余额：200</p>
+        <div class="page a">
+            部门a：<input type="number">
+            <button class="add">+</button>
+            <button class='sub'>-</button>
+        </div>
+        <div class="page b">
+            部门b：<input type="number">
+            <button class="add">+</button>
+            <button class='sub'>-</button>
+        </div>
+    </div>
+    <script>
+        function Resource() {
+            if (Resource.instance) {
+                return Resource.instance
+            } else {
+                this.balance = 100;
+                Resource.instance = this;
+            }
+        }
+    </script>
+</body>
+
+</html>
